@@ -1,0 +1,192 @@
+{% load static %}
+{% static "images" as baseURL %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home - Dimpu's Kitchen</title>
+    <link rel="stylesheet" href="{% static 'styles/homepage_styles.css' %}?v=2">
+</head>
+<body>
+    <!-- Navigation Bar -->
+	<nav>
+		<ul>
+			{% if user.is_authenticated %}
+				<li class="username">Hello, {{ user.first_name }}</li>
+			{% endif %}
+			<li><a href="/" class="active">Home</a></li>
+			<li><a href="/ContactUs">Contact Us</a></li>
+			<li><a href="/AboutUs">About Us</a></li>
+
+			{% if user.is_authenticated %}
+				<li><a href="/accounts/logout/">Logout</a></li>
+			{% else %}
+				<li><a href="/accounts/login/">Login</a></li>
+				<li><a href="/accounts/register/">Register</a></li>
+			{% endif %}
+			<li><a href="admin/" class="active">Admin Login</a></li>
+		</ul>
+	</nav>
+    
+    <!-- Hero Section with Auto Sliding Background -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Welcome to Dimpu's Kitchen</h1>
+            <p>Experience the authentic taste of Coorg with our homemade delicacies and exclusive local products.</p>
+        </div>
+    </section>
+    
+    <!-- Featured Products & Food Section -->
+	 
+    <div class="featured-products" id="featured-products">
+        <div class="container">
+            <div class="row">
+                <div class="col text-center">
+					<div class="section_title"><h2>Famouse Foods</h2></div>
+                    <div class="section_subtitle">Experience the rich flavors of Coorg with our homemade special. Made with locally sourced ingredients, this product delivers an unforgettable taste that will keep you coming back for more.</div>
+                </div>
+            </div>
+            <div class="row products_row">
+                <div class="col">
+                    <div class="products_container item_grid">
+                        {% for food in foods %}
+                        <div class="product item">
+                            <div class="product_image">
+                                <img src="{{ food.img.url }}" alt="{{ food.name }}">
+								{% if food.available %}
+							        <div class="badge available-badge">Available</div>
+								    {% else %}
+									<div class="badge not-available-badge">Not Available</div>
+								{% endif %}	
+                                {% if food.offer %}
+                                    <div class="spec_offer text-center">Special Offer</div>
+                                {% endif %}
+								    
+                            </div>
+                            <div class="product_content">
+                                <div class="product_title"><a href="#">{{ food.name }}</a></div>
+								<div><a href="{% url 'order' type='food' id=food.id %}" class="know_more_btn">Know More/ Order</a></div>
+                                <!-- <div class="product_desc"><p>{{ food.desc }}</p></div> -->
+                                <div class="product_price">₹{{ food.price }}</div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+	<div class="featured-products" id="featured-products">
+        <div class="container">
+            <div class="row">
+                <div class="col text-center">
+					<div class="section_title"><h2>Wine Section</h2></div>
+                    <div class="section_subtitle">Exclusive Coorg Delicacies</div>
+                </div>
+            </div>
+            <div class="row products_row">
+                <div class="col">
+                    <div class="products_container item_grid">
+                        {% for wine in wines %}
+                        <div class="product item">
+                            <div class="product_image">
+                                <img src="{{ wine.img.url }}" alt="{{ wine.name }}">
+								{% if wine.available %}
+							        <div class="badge available-badge">Available</div>
+								    {% else %}
+									<div class="badge not-available-badge">Not Available</div>
+								{% endif %}
+                                {% if wine.offer %}
+                                <div class="spec_offer text-center">Special Offer</div>
+                                {% endif %}
+                            </div>
+                            <div class="product_content">
+                                <div class="product_title"><a href="#">{{ wine.name }}</a></div>
+								<div><a href="{% url 'order' type='wine' id=wine.id %}" class="know_more_btn">Know More/ Order</a></div>
+                                <!-- <div class="product_desc"><p>{{ wine.desc }}</p></div> -->
+                                <div class="product_price">₹{{ wine.price }}</div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+	<div class="featured-products" id="featured-products">
+        <div class="container">
+            <div class="row">
+                <div class="col text-center">
+                    <div class="section_title"><h2>Other Products</h2></div>
+					<div class="section_subtitle">Try Our other Products</div>
+                </div>
+            </div>
+            <div class="row products_row">
+                <div class="col">
+                    <div class="products_container item_grid">
+                        {% for other_product in other_products %}
+                        <div class="product item">
+                            <div class="product_image">
+                                <img src="{{ other_product.img.url }}" alt="{{ other_product.name }}">
+								{% if other_product.available %}
+							        <div class="badge available-badge">Available</div>
+								    {% else %}
+									<div class="badge not-available-badge">Not Available</div>
+								{% endif %}
+                                {% if other_product.offer %}
+                                <div class="spec_offer text-center">Special Offer</div>
+                                {% endif %}
+                            </div>
+                            <div class="product_content">
+                                <div class="product_title"><a href="#">{{ other_product.name }}</a></div>
+								<div><a href="{% url 'order' type='other_product' id=other_product.id %}" class="know_more_btn">Know More/ Order</a></div>
+                                <!-- <div class="product_desc"><p>{{ other_product.desc }}</p></div> -->
+                                <div class="product_price">₹{{ other_product.price }}</div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Services Section -->
+    <section class="services">
+        <h2>Other Services</h2>
+        <div class="services-container">
+            <div class="service-item">
+                <img src="{% static 'images/coffee_plantation.jpg' %}" alt="Coffee Plantation Visit">
+                <h3>Coffee Plantation Visit</h3>
+                <p>Explore the lush coffee estates of Coorg and experience the traditional coffee-making process.</p>
+            </div>
+            <div class="service-item">
+                <img src="{% static 'images/riverside_fun.jpg' %}" alt="Riverside Fun">
+                <h3>Riverside Fun</h3>
+                <p>Enjoy serene riverside picnics, fishing, and adventure activities in the heart of Coorg.</p>
+            </div>
+            <div class="service-item">
+                <img src="{% static 'images/tourist_guide.jpg' %}" alt="Tourist Place Guide">
+                <h3>Tourist Place Guide</h3>
+                <p>Get a guided tour of Coorg’s breathtaking landscapes, waterfalls, and historical sites.</p>
+            </div>
+        </div>
+        <div class="video-container">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/VP-Om94Ol7w?si=z1Lw5_SYbJH7jmqc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+			<iframe width="560" height="315" src="https://www.youtube.com/embed/afLU_ZvlID8?si=-DlGF2VHnDFjz5ko" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Dimpu's Kitchen. All rights reserved.</p>
+    </footer>
+
+	<script src="{% static 'js/order-success.js' %}"></script>
+
+</body>
+</html>

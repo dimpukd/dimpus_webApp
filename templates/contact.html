@@ -1,0 +1,76 @@
+{% load static %}
+{% static "images" as baseURL %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us</title>
+    <link rel="stylesheet" href="{% static '/styles/contactus_styles.css' %}?v=2">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                {% if user.is_authenticated %}
+				    <li class="username">Hello, {{ user.first_name }}</li>
+			    {% endif %}
+			        <li><a href="/" class="active">Home</a></li>
+			        <li><a href="/ContactUs">Contact Us</a></li>
+			        <li><a href="/AboutUs">About Us</a></li>
+
+			    {% if user.is_authenticated %}
+				    <li><a href="/accounts/logout/">Logout</a></li>
+			    {% else %}
+				    <li><a href="/accounts/login/">Login</a></li>
+				    <li><a href="/accounts/register/">Register</a></li>
+			    {% endif %}
+            </ul>
+        </nav>
+    </header>
+
+    {% if user.is_authenticated %}
+    <section class="contact-container">
+        <div class="contact-content">
+            <h2>Contact Us</h2>
+            <p>If you have any questions, feel free to reach out to us by filling out the form below.</p>
+			<div class = "message">
+				{% for message in messages %}
+				<h3> {{message}} </h3>
+				{% endfor%}
+			</div>
+            <form action="{% url 'contact_submit' %}" method="POST">
+				{% csrf_token %}
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+                
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+                
+                <label for="phone">Phone Number:</label>
+                <input type="tel" id="phone" name="phone" required>
+                
+                <label for="message">Message:</label>
+                <textarea id="message" name="message" rows="4" required></textarea>
+                
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+        <div class="social-links">
+            <h3>You can also contact us through</h3>
+            <a href="https://wa.me/+919482864273" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
+            <a href="https://instagram.com/dimpu__gowda" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+            <a href="mailto:dimpu8289@gmail.com"><i class="fa-solid fa-envelope"></i></a>
+            <a href="tel:+919482864273"><i class="fa-solid fa-phone"></i></a>
+        </div>
+    </section>
+    {%else%}
+    <h3>Please Login</h3>
+    {%endif%}
+    <footer>
+        <p>&copy; 2025 Dimpu's Kitchen. All rights reserved.</p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,137 @@
+/* General Styles */
+body {
+    font-family: 'Poppins', sans-serif; /* Modern font */
+    margin: 0;
+    padding: 0;
+    padding-top: 60px;
+    background: linear-gradient(135deg, #f0f8ff, #dfe9f3); /* Soft gradient */
+    color: #333;
+    text-align: center;
+}
+
+/* Navigation */
+nav {
+    background-color: #007bff;
+    padding: 15px 0;
+    position: fixed; /* Fixes the nav bar to the top */
+    width: 100%; /* Ensures it spans the full width */
+    top: 0; /* Positions it at the very top */
+    left: 0;
+    z-index: 1000; /* Ensures it stays above other content */
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap; /* Allows items to wrap on smaller screens */
+}
+
+nav ul li {
+    margin: 0 15px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: white;
+    font-size: 18px;
+    padding: 10px 15px;
+    border-radius: 5px;
+    transition: all 0.3s ease-in-out;
+}
+
+nav ul li a:hover, .active {
+    background-color: #0056b3;
+    transform: scale(1.1); /* Subtle hover effect */
+}
+
+/* About Section */
+.about-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 80%;
+    margin: 50px auto;
+    background: white;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+    flex-wrap: wrap; /* Stacks on smaller screens */
+    transition: transform 0.3s ease-in-out;
+}
+
+.about-container:hover {
+    transform: scale(1.02); /* Slight zoom effect */
+}
+
+.about-content {
+    flex: 1;
+    padding: 20px;
+    text-align: justify; /* Justifies the paragraph text */
+    font-size: 18px; /* Slightly bigger font for better readability */
+    line-height: 1.6; /* Adds better spacing between lines */
+    color: #333; /* Darker color for better contrast */
+}
+
+.about-content h2 {
+    font-size: 32px;
+    color: #007bff;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.about-content p {
+    font-size: 16px;
+    color: #444;
+    text-align: justify;
+}
+
+/* Image Styling */
+.about-image img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.about-image img:hover {
+    transform: scale(1.05); /* Subtle zoom effect on hover */
+}
+
+/* Footer */
+footer {
+    background-color: #007bff;
+    color: white;
+    padding: 15px;
+    margin-top: 50px;
+    font-size: 16px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    nav ul {
+        flex-direction: column; /* Stacks menu items on mobile */
+        text-align: center;
+    }
+
+    .about-container {
+        flex-direction: column; /* Stacks content and image */
+        text-align: center;
+        padding: 30px;
+    }
+
+    @media (max-width: 768px) {
+        .about-content {
+            text-align: center;
+            font-size: 16px; /* Adjust font size for smaller screens */
+        }
+    }
+
+    .about-image img {
+        width: 90%;
+        margin-top: 20px;
+    }
+}
