@@ -38,7 +38,7 @@
         </div>
     </section>
     
-    <!-- Featured Products & Food Section -->
+    <!-- Food Section -->
 	 
     <div class="featured-products" id="featured-products">
         <div class="container">
@@ -68,7 +68,6 @@
                             <div class="product_content">
                                 <div class="product_title"><a href="#">{{ food.name }}</a></div>
 								<div><a href="{% url 'order' type='food' id=food.id %}" class="know_more_btn">Know More/ Order</a></div>
-                                <!-- <div class="product_desc"><p>{{ food.desc }}</p></div> -->
                                 <div class="product_price">₹{{ food.price }}</div>
                             </div>
                         </div>
@@ -78,6 +77,8 @@
             </div>
         </div>
     </div>
+
+     <!-- Wine section -->
 
 	<div class="featured-products" id="featured-products">
         <div class="container">
@@ -106,7 +107,6 @@
                             <div class="product_content">
                                 <div class="product_title"><a href="#">{{ wine.name }}</a></div>
 								<div><a href="{% url 'order' type='wine' id=wine.id %}" class="know_more_btn">Know More/ Order</a></div>
-                                <!-- <div class="product_desc"><p>{{ wine.desc }}</p></div> -->
                                 <div class="product_price">₹{{ wine.price }}</div>
                             </div>
                         </div>
@@ -116,6 +116,8 @@
             </div>
         </div>
     </div>
+
+    <!-- Other products -->
 
 	<div class="featured-products" id="featured-products">
         <div class="container">
@@ -144,7 +146,6 @@
                             <div class="product_content">
                                 <div class="product_title"><a href="#">{{ other_product.name }}</a></div>
 								<div><a href="{% url 'order' type='other_product' id=other_product.id %}" class="know_more_btn">Know More/ Order</a></div>
-                                <!-- <div class="product_desc"><p>{{ other_product.desc }}</p></div> -->
                                 <div class="product_price">₹{{ other_product.price }}</div>
                             </div>
                         </div>
@@ -181,7 +182,6 @@
         </div>
     </section>
     
-    <!-- Footer -->
     <footer>
         <p>&copy; 2025 Dimpu's Kitchen. All rights reserved.</p>
     </footer>

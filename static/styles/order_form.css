@@ -1,4 +1,3 @@
-/* General Styles */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -6,7 +5,6 @@ body {
     background-color: #f4f4f4;
 }
 
-/* Navigation */
 nav {
     background-color: #007bff;
     padding: 15px 0;
@@ -42,7 +40,6 @@ nav ul li a:hover {
     background-color: #0056b3;
 }
 
-/* Know More Section */
 .know-more {
     display: flex;
     justify-content: center;
@@ -87,7 +84,6 @@ nav ul li a:hover {
     line-height: 1.6;
 }
 
-/* Order Button */
 .order-btn {
     display: inline-block;
     padding: 12px 20px;
@@ -105,7 +101,6 @@ nav ul li a:hover {
     background-color: #218838;
 }
 
-/* Order Form */
 .order-form {
     display: none;
     justify-content: center;
@@ -167,7 +162,6 @@ nav ul li a:hover {
     color: red;
 }
 
-/* Footer */
 footer {
     background-color: #007bff;
     color: white;
@@ -176,7 +170,6 @@ footer {
     margin-top: 30px;
 }
 
-/* Responsive Design */
 @media (max-width: 768px) {
     .container {
         flex-direction: column;

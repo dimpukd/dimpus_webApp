@@ -10,6 +10,6 @@ def order(request, type, id):
     elif type == "other_products":
         product = get_object_or_404(other_products, id=id)
     else:
-        product = None  # Handle invalid type
+        product = None
 
     return render(request, 'order.html', {'product': product, 'type': type})

@@ -12,7 +12,6 @@
     <script defer src="{% static 'js/order_form.js' %}"></script>
 </head>
 <body>
-    <!-- Navigation Bar -->
     <nav>
         <ul>
             {% if user.is_authenticated %}
@@ -32,9 +31,6 @@
         </ul>
     </nav>
 
-
-
-    <!-- Know More Section -->
     {% if user.is_authenticated %}
     <section class="know-more">
         <div class="container">
@@ -85,7 +81,6 @@
     <div><h3>Please Login</h3></div>
     {%endif%}
 
-    <!-- Footer -->
     <footer>
         <p>&copy; 2025 Dimpu's Kitchen. All rights reserved.</p>
     </footer>

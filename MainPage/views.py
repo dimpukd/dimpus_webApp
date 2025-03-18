@@ -51,16 +51,12 @@ def contact_submit(request):
         phone = request.POST.get("phone")
         message = request.POST.get("message")
 
-        # Email content
         subject = "New Contact Form Submission"
         body = f"Name: {name}\nEmail: {email}\nPhone: {phone}\nMessage: {message}"
         from_email = "dimpu8289@gmail.com"  # Must match EMAIL_HOST_USER in settings.py
         to_email = ["machamma1940@gmail.com"]  # Your email (recipient)
 
-        # Send email automatically
         send_mail(subject, body, from_email, to_email, fail_silently=False)
-
-       # return HttpResponse("Message sent via email successfully!")
 
         messages.info(request, 'Thank you for your  message, we will get back to you very Soon!!')
         return redirect('contact_us')
@@ -78,18 +74,14 @@ def submit_order(request):
         date = request.POST.get("date")
         address = request.POST.get("address")
 
-        # Email content
+       
         subject = "New Order"
         body = f"Name: {name}\nPhone: {phone}\nProduct Name : {product_name}\nQuantity : {quantity}\n Date: {date}\nAddress: {address}"
         from_email = "dimpu8289@gmail.com"  # Must match EMAIL_HOST_USER in settings.py
         to_email = ["machamma1940@gmail.com"]  # Your email (recipient)
 
-        # Send email automatically
         send_mail(subject, body, from_email, to_email, fail_silently=False)
 
-       # return HttpResponse("Message sent via email successfully!")
-
-       # messages.info(request, 'Thank you for your Order, we will get back to you very Soon!!')
         return redirect('/?order_success=1')
 
     return HttpResponse("Invalid Request", status=400)
